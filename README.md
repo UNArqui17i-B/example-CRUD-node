@@ -15,7 +15,7 @@
 ```bash
 yarn install
 docker build -t arqsoft/examplenode .
-docker run -it arqsoft/examplenode
+docker run -P -it arqsoft/examplenode
 ```
 
 ## License
