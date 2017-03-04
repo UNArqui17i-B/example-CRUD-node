@@ -3,6 +3,14 @@
   [![build status][travis-image]][travis-url]
   [![Test coverage][codecov-image]][codecov-url]
 
+## Features
+
+  * CRUD on books
+  * REST API
+  * test API
+  * check coverage
+  * documents REST using RAML
+  * linter styles
 
 ## License
 
