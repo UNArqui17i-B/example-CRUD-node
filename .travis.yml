@@ -3,5 +3,9 @@ node_js:
   - node
   - lts/boron # v6
   - lts/argon # v4
+services:
+  - mongodb
+before_script:
+  - sleep 15
 script: "npm run test-travis"
 after_script: "bash <(curl -s https://codecov.io/bash)"
