@@ -4,6 +4,7 @@ const express = require('express');
 const status = require('http-status');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 let app = express();
 
@@ -12,8 +13,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+mongoose.connect('mongodb://localhost:27017/books');
+const Book = mongoose.model('Book', require('./models/book'), 'books');
+
 // routes
-app.use('/books', require('./resources/books')());
+app.use('/books', require('./resources/books')(Book));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -33,7 +37,5 @@ app.use(function (err, req, res) {
     res.send({'error': err.message});
 });
 
-app.listen(3000, function () {
-    console.log('Listening on port 3000!')
-});
+app.listen(3000);
 
