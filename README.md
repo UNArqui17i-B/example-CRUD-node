@@ -4,13 +4,19 @@
   [![Test coverage][codecov-image]][codecov-url]
 
 ## Features
-
   * CRUD on books
   * REST API
   * test API
   * check coverage
   * documents REST using RAML
   * linter styles
+
+## Build
+```bash
+yarn install
+docker build -t arqsoft/examplenode .
+docker run -it arqsoft/examplenode
+```
 
 ## License
 

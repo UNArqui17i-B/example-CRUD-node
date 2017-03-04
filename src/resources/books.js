@@ -9,6 +9,7 @@ module.exports = function (Book) {
     // list of all books
     router.get('/', function (req, res) {
         Book.find().exec(function (err, data) {
+            /* istanbul ignore next */
             if (err) {
                 res.status(status.INTERNAL_SERVER_ERROR).send(err);
             } else {
@@ -20,8 +21,9 @@ module.exports = function (Book) {
     // search for id
     router.get('/:id', function (req, res) {
         Book.findOne({id: req.params.id}, function (err, data) {
+            /* istanbul ignore next */
             if (err) {
-                res.status(status.BAD_REQUEST).send(err);
+                res.status(status.INTERNAL_SERVER_ERROR).send(err);
             } else {
                 res.status(status.OK).send(data);
             }
@@ -32,6 +34,7 @@ module.exports = function (Book) {
     router.post('/', function (req, res) {
         let book = new Book(req.body);
         book.save(function (err, data) {
+            /* istanbul ignore next */
             if (err) {
                 res.status(status.INTERNAL_SERVER_ERROR).send(err);
             } else {
@@ -43,8 +46,9 @@ module.exports = function (Book) {
     // update a book
     router.put('/:id', function (req, res) {
         Book.update({id: req.params.id}, req.body, function (err, data) {
+            /* istanbul ignore next */
             if (err) {
-                res.status(status.BAD_REQUEST).send(err);
+                res.status(status.INTERNAL_SERVER_ERROR).send(err);
             } else {
                 res.status(status.OK).send(data);
             }
@@ -54,6 +58,7 @@ module.exports = function (Book) {
     // delete a book
     router.delete('/:id', function (req, res) {
         Book.find({id: req.params.id}).remove().exec(function (err, data) {
+            /* istanbul ignore next */
             if (err) {
                 res.status(status.INTERNAL_SERVER_ERROR).send(err);
             } else {
