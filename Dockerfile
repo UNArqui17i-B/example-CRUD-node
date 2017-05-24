@@ -1,7 +1,5 @@
 FROM node:6-slim
 
-MAINTAINER Miguel Asencio <maasencioh@gmail.com>
-
 # Create app directory
 WORKDIR /git/example-node
 
