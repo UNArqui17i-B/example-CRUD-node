@@ -5,6 +5,8 @@ const status = require('http-status');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const DB_URL = process.env.DB_URL || 'localhost';
+const DB_PORT = process.env.DB_PORT || '27017';
 
 let app = express();
 
@@ -13,7 +15,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-mongoose.connect('mongodb://localhost:27017/books');
+mongoose.connect(`mongodb://${DB_URL}:${DB_PORT}/books`);
 const Book = mongoose.model('Book', require('./models/book'), 'books');
 
 // routes
