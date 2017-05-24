@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const DB_URL = process.env.DB_URL || 'localhost';
 const DB_PORT = process.env.DB_PORT || '27017';
+const HOST_PORT = process.env.HOST_PORT || '3000';
 
 let app = express();
 
@@ -39,5 +40,5 @@ app.use(function (err, req, res) {
     res.send({'error': err.message});
 });
 
-app.listen(3000);
+app.listen(HOST_PORT);
 
